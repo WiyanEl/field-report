@@ -1,0 +1,160 @@
+
+.admin-dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.admin-dashboard-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.admin-dashboard-heading h1 {
+  margin: 0 0 8px;
+  color: #0f172a;
+  font-size: 26px;
+}
+
+.admin-dashboard-heading p,
+.admin-dashboard-panel-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.admin-dashboard-refresh {
+  padding: 10px 16px;
+  border: 1px solid #dbe3ed;
+  border-radius: 8px;
+  background: #fff;
+  cursor: pointer;
+}
+
+.admin-dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.admin-stat-card,
+.admin-dashboard-panel {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.admin-stat-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 20px;
+}
+
+.admin-stat-card span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.admin-stat-card strong {
+  color: #0f172a;
+  font-size: 30px;
+}
+
+.admin-stat-card small {
+  color: #64748b;
+  font-size: 12px;
+}
+
+.admin-dashboard-panel {
+  overflow: hidden;
+}
+
+.admin-dashboard-panel-heading {
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.admin-dashboard-panel-heading h2 {
+  margin: 0 0 8px;
+  font-size: 17px;
+}
+
+.admin-dashboard-table-wrapper {
+  overflow-x: auto;
+}
+
+.admin-dashboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.admin-dashboard-table th,
+.admin-dashboard-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #f1f5f9;
+  font-size: 13px;
+}
+
+.admin-dashboard-table th {
+  background: #f8fafc;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.admin-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.admin-status-pending {
+  background: #fff7ed;
+  color: #c2410c;
+}
+
+.admin-status-approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.admin-status-rejected {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.admin-dashboard-empty {
+  padding: 32px 20px;
+  color: #64748b;
+  text-align: center;
+}
+
+.admin-dashboard-error {
+  padding: 14px;
+  border-radius: 8px;
+  background: #fef2f2;
+  color: #b91c1c;
+}
+
+@media (max-width: 900px) {
+  .admin-dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 600px) {
+  .admin-dashboard-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+}

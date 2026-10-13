@@ -1,0 +1,221 @@
+
+.decision-history-page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.decision-history-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.decision-history-breadcrumb {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.decision-history-heading h1 {
+  margin: 10px 0 8px;
+  color: #0f172a;
+  font-size: 26px;
+}
+
+.decision-history-heading p {
+  margin: 0;
+  color: #64748b;
+  font-size: 14px;
+}
+
+.decision-history-refresh,
+.decision-history-message button {
+  padding: 10px 16px;
+  border: 1px solid #dbe3ed;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.decision-history-refresh:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.decision-history-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.decision-history-summary-card {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.decision-history-summary-card span {
+  color: #64748b;
+  font-size: 13px;
+}
+
+.decision-history-summary-card strong {
+  color: #0f172a;
+  font-size: 28px;
+}
+
+.decision-history-card {
+  overflow: hidden;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.decision-history-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.decision-history-toolbar h2 {
+  margin: 0 0 6px;
+  font-size: 17px;
+}
+
+.decision-history-toolbar p {
+  margin: 0;
+  color: #64748b;
+  font-size: 13px;
+}
+
+.decision-history-toolbar select {
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  background: #fff;
+  color: #334155;
+  font-size: 13px;
+}
+
+.decision-history-table-wrapper {
+  overflow-x: auto;
+}
+
+.decision-history-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.decision-history-table th,
+.decision-history-table td {
+  padding: 15px 18px;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: top;
+  font-size: 13px;
+}
+
+.decision-history-table th {
+  background: #f8fafc;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.decision-history-name {
+  min-width: 170px;
+  color: #0f172a;
+  font-weight: 600;
+}
+
+.decision-history-description {
+  min-width: 220px;
+  max-width: 360px;
+  overflow-wrap: anywhere;
+}
+
+.decision-history-status {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.decision-history-status-approved {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.decision-history-status-rejected {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.decision-history-message {
+  padding: 40px 20px;
+  color: #64748b;
+  text-align: center;
+}
+
+.decision-history-error {
+  color: #b91c1c;
+}
+
+.decision-history-note {
+  margin: 0;
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.decision-history-warning {
+  margin: 16px 20px 0;
+  padding: 12px 14px;
+  border-radius: 8px;
+  background: #fff7ed;
+  color: #9a3412;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.decision-history-approver {
+  min-width: 180px;
+  overflow-wrap: anywhere;
+  font-family: monospace;
+  font-size: 12px !important;
+}
+
+@media (max-width: 600px) {
+  .decision-history-heading {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .decision-history-summary {
+    gap: 10px;
+  }
+
+  .decision-history-summary-card {
+    padding: 14px;
+  }
+
+  .decision-history-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .decision-history-toolbar select {
+    width: 100%;
+  }
+}
