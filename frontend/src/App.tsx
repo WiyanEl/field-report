@@ -1,9 +1,8 @@
 
-import { BrowserRouter, Navigate, Route, Routes, useNavigate } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 
 import { AuthProvider, useAuth } from "./contexts/AuthContext";
 import ProtectedRoute from "./components/ProtectedRoute";
-import PagePlaceholder from "./components/PagePlaceholder";
 import DashboardLayout from "./layouts/DashboardLayout";
 import Login from "./pages/Login";
 import Reports from './pages/Reports'

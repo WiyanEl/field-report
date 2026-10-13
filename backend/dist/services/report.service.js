@@ -7,6 +7,7 @@ exports.getAllReports = getAllReports;
 exports.createReport = createReport;
 exports.updateReportStatus = updateReportStatus;
 exports.getApprovalHistory = getApprovalHistory;
+exports.updateReport = updateReport;
 const database_1 = __importDefault(require("../config/database"));
 async function getAllReports(userId) {
     const query = (0, database_1.default)('reports').select('*');
@@ -56,4 +57,37 @@ async function getApprovalHistory(reportId) {
         .where({ report_id: reportId })
         .orderBy("created_at", "desc")
         .orderBy("id", "desc");
+}
+async function updateReport(id, userId, input) {
+    return database_1.default.transaction(async (trx) => {
+        const existing = await trx('reports')
+            .where({
+            id,
+            user_id: userId,
+        })
+            .forUpdate()
+            .first();
+        if (!existing) {
+            return null;
+        }
+        if (existing.status !== 'pending') {
+            throw new Error('REPORT_NOT_PENDING');
+        }
+        const [report] = await trx('reports')
+            .where({
+            id,
+            user_id: userId,
+            status: 'pending',
+        })
+            .update({
+            name: input.name,
+            description: input.description,
+            updated_at: trx.fn.now(),
+        })
+            .returning('*');
+        if (!report) {
+            throw new Error('REPORT_NOT_PENDING');
+        }
+        return report;
+    });
 }

@@ -4,6 +4,7 @@ exports.listReports = listReports;
 exports.addReport = addReport;
 exports.changeReportStatus = changeReportStatus;
 exports.listApprovalHistory = listApprovalHistory;
+exports.editReport = editReport;
 const report_service_1 = require("../services/report.service");
 const allowedStatuses = ["approved", "rejected"];
 function isValidUUID(value) {
@@ -158,6 +159,79 @@ async function listApprovalHistory(req, res) {
         res.status(500).json({
             success: false,
             message: "Gagal mengambil riwayat persetujuan",
+        });
+    }
+}
+async function editReport(req, res) {
+    try {
+        const { id } = req.params;
+        const { name, description } = req.body ?? {};
+        if (typeof id !== "string" || !isValidUUID(id)) {
+            res.status(400).json({
+                success: false,
+                message: "ID laporan tidak valid",
+            });
+            return;
+        }
+        if (typeof name !== "string" || !name.trim()) {
+            res.status(400).json({
+                success: false,
+                message: "Nama wajib diisi",
+            });
+            return;
+        }
+        if (name.trim().length > 150) {
+            res.status(400).json({
+                success: false,
+                message: "Nama laporan maksimal 150 karakter",
+            });
+            return;
+        }
+        if (typeof description !== "string" || !description.trim()) {
+            res.status(400).json({
+                success: false,
+                message: "Deskripsi wajib diisi",
+            });
+            return;
+        }
+        const user = req.user;
+        if (!user) {
+            res.status(401).json({
+                success: false,
+                message: "Autentikasi diperlukan",
+            });
+            return;
+        }
+        const report = await (0, report_service_1.updateReport)(id, user.id, {
+            name: name.trim(),
+            description: description.trim(),
+        });
+        if (!report) {
+            res.status(404).json({
+                success: false,
+                message: "Laporan tidak ditemukan",
+            });
+            return;
+        }
+        res.status(200).json({
+            success: true,
+            message: "Laporan berhasil diperbarui",
+            data: report,
+        });
+    }
+    catch (error) {
+        if (error instanceof Error &&
+            error.message === "REPORT_NOT_PENDING") {
+            res.status(409).json({
+                success: false,
+                message: "Laporan tidak dapat diedit karena sudah diproses",
+            });
+            return;
+        }
+        console.error("Error editing report:", error);
+        res.status(500).json({
+            success: false,
+            message: "Gagal memperbarui laporan",
         });
     }
 }

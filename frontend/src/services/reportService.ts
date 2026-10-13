@@ -15,7 +15,7 @@ export async function getReports(): Promise<Report[]> {
   }
 
   if (response.data && !Array.isArray(response.data)) {
-    return response.data.reports ?? response.data.items ?? [];
+    return response.data ?? response.data ?? [];
   }
 
   return [];

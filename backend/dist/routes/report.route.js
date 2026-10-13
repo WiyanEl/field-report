@@ -7,5 +7,6 @@ const router = (0, express_1.Router)();
 router.get('/', auth_middleware_1.authenticate, report_controller_1.listReports);
 router.get("/:id/history", auth_middleware_1.authenticate, (0, auth_middleware_1.authorize)("admin", "approver"), report_controller_1.listApprovalHistory);
 router.post('/', auth_middleware_1.authenticate, (0, auth_middleware_1.authorize)("reporter"), report_controller_1.addReport);
+router.patch('/:id', auth_middleware_1.authenticate, (0, auth_middleware_1.authorize)('reporter'), report_controller_1.editReport);
 router.patch('/:id/status', auth_middleware_1.authenticate, (0, auth_middleware_1.authorize)("approver"), report_controller_1.changeReportStatus);
 exports.default = router;

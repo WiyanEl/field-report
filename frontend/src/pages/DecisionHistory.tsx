@@ -1,10 +1,6 @@
 
 import { useCallback, useEffect, useState } from "react";
-import {
-  getReports,
-  getReportHistory,
-} from "../services/reportService";
-import type { Report } from "../types/report";
+import { getReports, getReportHistory } from "../services/reportService";
 import type { ReportHistoryEntry } from "../types/reportHistory";
 import "./DecisionHistory.css";
 
